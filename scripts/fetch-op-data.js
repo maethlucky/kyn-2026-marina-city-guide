@@ -26,6 +26,6 @@ async function fetchAndWrite() {
     });
 
     const data = await response.json();
-    fs.writeFileSync('./data/places.json', JSON.stringify(data, null, 2));
+    fs.writeFileSync('./data/placesOpFormat.json', JSON.stringify(data, null, 2));
     console.log('Done!');
 }
