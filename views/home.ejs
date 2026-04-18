@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <title>Home</title>
 </head>
+
 <body>
     <section class="hero">
         <p class=" hero-title">Marina, by Interest</p>
@@ -15,22 +17,22 @@
             Pick a few interests and explore local spots around Marina </p>
         </p>
 
-        <div class="tag-grid">
-            <button class="interest-tag">Food</button>
+        <div class="tag-grid" id="tag-grid">
+            <!-- <button class="interest-tag">Food</button>
             <button class="interest-tag">Outdoors</button>
             <button class="interest-tag">History</button>
             <button class="interest-tag">Family</button>
             <button class="interest-tag">Budget</button>
             <button class="interest-tag">Quiet</button>
             <button class="interest-tag">Date Night</button>
-            <button class="interest-tag">Hidden gems</button>
+            <button class="interest-tag">Hidden gems</button> -->
         </div>
 
         <div class="results-shell mt-4">
             <div class="row g-3 text-start">
-                <div class="col-md-4">
+                <span class="result-label">Recommended Locations</span>
+                <div class="col-md-4" id="results-container">
                     <div class="result-card">
-                        <span class="result-label"> Recommended</span>
                         <h3> TEST</h3>
                         <p>
                             TEST FOR TEXT OF SPOT FOUND COULD BE EXTRA INFO OF SPOT
@@ -42,5 +44,73 @@
         </div>
 
     </section>
+
+    <script>
+        const selectedTags = new Set();
+
+        fetchTags();
+
+        document.querySelector("#tag-grid").addEventListener("click", toggleTag);
+
+        function toggleTag(e) {
+            if (!e.target.classList.contains("interest-tag")) return;
+
+            const tag = e.target.dataset.tag;
+            if (selectedTags.has(tag)) {
+                selectedTags.delete(tag);
+                e.target.classList.remove("active");
+            } else {
+                selectedTags.add(tag);
+                e.target.classList.add("active");
+            }
+
+            updateResults();
+        }
+
+        async function updateResults() {
+            const res = await fetch("/api/places");
+            const places = await res.json();
+
+            const scored = places
+                .map((place) => ({
+                    ...place,
+                    score: place.tags.filter((t) => selectedTags.has(t)).length,
+                }))
+                .filter((p) => p.score > 0)
+                .sort((a, b) => b.score - a.score);
+
+            const container = document.querySelector("#results-container");
+            container.innerHTML = "";
+
+            scored.forEach(place => {
+                const div = document.createElement("div");
+                div.className = "result-card";
+                div.innerHTML = `
+                    <h3>${place.name ?? "Name Unknown"}</h3>
+                    <p>Location: ${place.lat}, ${place.lon}</p>
+                    <p>Tags: ${place.tags.join(", ")}</p> 
+                `;
+                container.appendChild(div);
+            })
+        }
+
+        async function fetchTags() {
+            const res = await fetch("/api/tags");
+            const tags = await res.json();
+
+            const container = document.querySelector("#tag-grid");
+
+            tags.forEach(tag => {
+                const btn = document.createElement("button");
+                btn.className = "interest-tag";
+                btn.dataset.tag = tag.id;
+                btn.textContent = tag.label;
+                container.appendChild(btn);
+            })
+        }
+
+
+    </script>
 </body>
+
 </html>

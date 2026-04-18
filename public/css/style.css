@@ -50,11 +50,15 @@ body{
 
 .interest-tag {
     border: 1px solid #b9d1ca;
-    background: #ffffff;
+    background: #cccccc;
     color: #18312b;
     border-radius: 999px;
     padding: 0.8rem 1.15rem;
     font-weight: 600;
     transition: all 0.2s ease;
     cursor: pointer;
+}
+
+.interest-tag.active {
+    background: #ffffff;
 }
