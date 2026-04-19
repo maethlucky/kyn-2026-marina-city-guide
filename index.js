@@ -170,6 +170,72 @@ app.post("/logout", (req, res, next) => {
   });
 });
 
+function requireAuth(req, res, next) {
+  if (!req.user) {
+    return res.status(401).json({ success: false, error: "You must be logged in." });
+  }
+  next();
+}
+
+app.post("/api/favorites", requireAuth, (req, res) => {
+  const { placeId } = req.body;
+
+  if (!placeId) {
+    return res.status(400).json({ success: false, error: "Missing placeId." });
+  }
+
+  db.prepare(`
+    INSERT OR IGNORE INTO favorites (user_id, place_id)
+    VALUES (?, ?)
+  `).run(req.user.id, String(placeId));
+
+  res.json({ success: true });
+});
+
+
+app.get("/api/favorites", requireAuth, (req, res) => {
+  const places = JSON.parse(fs.readFileSync("./data/places.json", "utf8"));
+
+  const submitted = db.prepare(`
+    SELECT id, name, lat, lon, phone, website, hours, tags
+    FROM user_submissions
+  `).all().map((row) => ({
+    id: String(row.id + 100),
+    name: row.name,
+    lat: row.lat,
+    lon: row.lon,
+    phone: row.phone,
+    website: row.website,
+    hours: row.hours,
+    tags: JSON.parse(row.tags)
+  }));
+
+  const allPlaces = [...places, ...submitted].map((place) => ({
+    ...place,
+    id: String(place.id)
+  }));
+
+  const favoriteIds = db.prepare(`
+    SELECT place_id
+    FROM favorites
+    WHERE user_id = ?
+  `).all(req.user.id).map((row) => row.place_id);
+
+  const favorites = allPlaces.filter((place) => favoriteIds.includes(String(place.id)));
+
+  res.json(favorites);
+});
+
+app.delete("/api/favorites/:placeId", requireAuth, (req, res) => {
+  db.prepare(`
+    DELETE FROM favorites
+    WHERE user_id = ? AND place_id = ?
+  `).run(req.user.id, String(req.params.placeId));
+
+  res.json({ success: true });
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
