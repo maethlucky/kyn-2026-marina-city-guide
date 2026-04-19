@@ -12,7 +12,11 @@
   "type": "commonjs",
   "dependencies": {
     "better-sqlite3": "^12.9.0",
+    "dotenv": "^17.4.2",
     "ejs": "^5.0.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12"
   }
 }

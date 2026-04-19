@@ -11,6 +11,14 @@
 </head>
 
 <body>
+    <% if (!user) { %>
+  <a href="/auth/github" class="btn btn-dark">Sign in with GitHub</a>
+    <% } else { %>
+  <p>Signed in as <%= user.display_name %></p>
+  <form method="POST" action="/logout">
+    <button class="btn btn-outline-secondary" type="submit">Log out</button>
+  </form>
+    <% } %>
     <a href="/submit" class="submit-btn">+ Add a Location</a>
     <section class="hero">
         <p class=" hero-title">Marina, by Interest</p>

@@ -13,4 +13,15 @@ db.exec(`CREATE TABLE IF NOT EXISTS user_submissions (
     tags TEXT NOT NULL
   )
 `);
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    github_id TEXT UNIQUE NOT NULL,
+    username TEXT,
+    display_name TEXT,
+    email TEXT
+  )
+`);
+
 module.exports = db;
