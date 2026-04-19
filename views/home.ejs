@@ -28,34 +28,35 @@
             <button class="interest-tag">Hidden gems</button> -->
         </div>
 
-        <div class="results-shell mt-4">
-            <div class="row g-3 text-start">
-                <span class="result-label">Recommended Locations</span>
-                <div class="col-md-4" id="results-container">
-                    <div class="result-card">
-                        <h3> TEST</h3>
-                        <p>
-                            TEST FOR TEXT OF SPOT FOUND COULD BE EXTRA INFO OF SPOT
-                        </p>
-                    </div>
-                </div>
+        <div class="subcategory-shelf" id="subcategory-shelf"></div>
 
-            </div>
+        <div class="results-shell mt-4">
+            <p class="result-label mb-2">Recommended Locations</p>
+            <div class="row g-3" id="results-container"></div>
         </div>
 
     </section>
 
     <script>
         const selectedTags = new Set();
+        let tagLabels = {};
 
         fetchTags();
 
         document.querySelector("#tag-grid").addEventListener("click", toggleTag);
+        document.querySelector("#subcategory-shelf").addEventListener("click", toggleTag);
 
         function toggleTag(e) {
             if (!e.target.classList.contains("interest-tag")) return;
 
             const tag = e.target.dataset.tag;
+
+            if (e.target.dataset.hasChildren) {
+                const subRow = document.getElementById(`sub-${tag}`);
+                subRow.classList.toggle("visible");
+                e.target.classList.toggle("expanded");
+            }
+
             if (selectedTags.has(tag)) {
                 selectedTags.delete(tag);
                 e.target.classList.remove("active");
@@ -82,16 +83,18 @@
             const container = document.querySelector("#results-container");
             container.innerHTML = "";
 
-            scored.forEach(place => {
-                const div = document.createElement("div");
-                div.className = "result-card";
-                div.innerHTML = `
-                    <h3>${place.name ?? "Name Unknown"}</h3>
-                    <p>Location: ${place.lat}, ${place.lon}</p>
-                    <p>Tags: ${place.tags.join(", ")}</p> 
+            scored.slice(0, 10).forEach(place => {
+                const col = document.createElement("div");
+                col.className = "col-md-4 col-sm-6";
+
+                col.innerHTML = `
+                    <div class="result-card">
+                        <h3>${place.name ?? "Name Unknown"}</h3>
+                        <p>${place.tags.map((t) => tagLabels[t] ?? t).join(", ")}</p>
+                    </div>
                 `;
-                container.appendChild(div);
-            })
+                container.appendChild(col);
+            });
         }
 
         async function fetchTags() {
@@ -99,13 +102,39 @@
             const tags = await res.json();
 
             const container = document.querySelector("#tag-grid");
+            const subContainer = document.querySelector("#subcategory-shelf");
+
+            container.innerHTML = "";
+            subContainer.innerHTML = "";
 
             tags.forEach(tag => {
+                tagLabels[tag.id] = tag.label;
+
                 const btn = document.createElement("button");
                 btn.className = "interest-tag";
                 btn.dataset.tag = tag.id;
                 btn.textContent = tag.label;
+                if (tag.subcategories) btn.dataset.hasChildren = true;
                 container.appendChild(btn);
+
+                if (tag.subcategories) {
+                    const subRow = document.createElement("div");
+                    subRow.className = "subcategory-row";
+                    subRow.id = `sub-${tag.id}`;
+
+                    tag.subcategories.forEach(sub => {
+                        tagLabels[sub.id] = sub.label;
+
+                        const subBtn = document.createElement("button");
+                        subBtn.className = "interest-tag subcategory";
+                        subBtn.dataset.tag = sub.id;
+                        subBtn.dataset.parent = tag.id;
+                        subBtn.textContent = sub.label;
+                        subRow.appendChild(subBtn);
+                    });
+
+                    subContainer.appendChild(subRow);
+                }
             })
         }
 

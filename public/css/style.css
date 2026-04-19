@@ -1,26 +1,27 @@
-body{
+body {
     min-height: 100vh;
-    background: linear-gradient(180deg,#ffffff 0%,#5371f5 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #5371f5 100%);
     color: #18312b;
 }
 
-.hero{
+.hero {
     min-height: 100vh;
-    
     align-items: center;
     justify-content: center;
     padding: 3rem 1rem;
 }
-.hero-card{
+
+.hero-card {
     max-width: 900px;
     width: 100%;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(24, 49, 43, 0.08);
-      border-radius: 28px;
-      box-shadow: 0 20px 60px rgba(24, 49, 43, 0.08);
-      padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(24, 49, 43, 0.08);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(24, 49, 43, 0.08);
+    padding: 3rem 2rem;
 }
-.eyebrow{
+
+.eyebrow {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-size: 0.8rem;
@@ -34,12 +35,14 @@ body{
     line-height: 1.05;
     margin-bottom: 1rem;
 }
+
 .hero-copy {
     max-width: 640px;
     font-size: 1.05rem;
     color: #49635d;
     margin: 0 auto 2rem;
 }
+
 .tag-grid {
     display: flex;
     flex-wrap: wrap;
@@ -61,4 +64,58 @@ body{
 
 .interest-tag.active {
     background: #ffffff;
+}
+
+.subcategory-shelf {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subcategory-row {
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0 0.25rem 0.5rem;
+    border-left: 2px solid rgba(24, 49, 43, 0.15);
+    margin-bottom: 0.5rem;
+    max-width: fit-content;
+}
+
+.subcategory-row.visible {
+    display: flex;
+}
+
+.results-shell {
+    max-width: 900px;
+}
+
+.result-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #4d7a70;
+}
+
+.result-card {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 1.1rem 1.25rem;
+    border-radius: 16px;
+    border: 1px solid rgba(24, 49, 43, 0.08);
+    margin: 0.2rem;
+}
+
+.result-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.result-card p {
+    font-size: 0.8rem;
+    color: #4d7a70;
+    margin: 0;
 }
