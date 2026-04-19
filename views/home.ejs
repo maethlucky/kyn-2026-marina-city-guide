@@ -54,7 +54,8 @@
             if (e.target.dataset.hasChildren) {
                 const subRow = document.getElementById(`sub-${tag}`);
                 subRow.classList.toggle("visible");
-                e.target.classList.toggle("expanded");
+                e.target.classList.toggle("active");
+                return;
             }
 
             if (selectedTags.has(tag)) {

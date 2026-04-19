@@ -17,7 +17,6 @@ const tags = [
     },
     { id: 'cafe', label: 'Cafe' },
     { id: 'pub', label: 'Pub' },
-    
     { id: 'fitness_centre', label: 'Fitness' },
     { id: 'supermarket', label: 'Supermarket' },
     { id: 'convenience', label: 'Convenience Store' },
