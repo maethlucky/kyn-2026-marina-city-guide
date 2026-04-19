@@ -28,7 +28,7 @@ app.get("/api/places", (req, res) => {
     SELECT id, name, lat, lon, phone, website, hours, tags
     FROM user_submissions
   `).all().map((row) => ({
-    id: `user-${row.id}`,
+    id: row.id + 100,
     name: row.name,
     lat: row.lat,
     lon: row.lon,
@@ -65,7 +65,10 @@ app.post("/api/submit", (req, res) => {
   res.json({ success: true, id: result.lastInsertRowid  });
 });
 
-
+app.delete("/api/submissions", (req, res) => {
+    const result = db.prepare(`DELETE FROM user_submissions`).run();
+    res.json({ success: true, deleted: result.changes });
+});
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
