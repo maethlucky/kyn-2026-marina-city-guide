@@ -1,8 +1,5 @@
 require("dotenv").config();
 
-
-
-
 const express = require("express");
 const fs = require("fs");
 const session = require("express-session");
@@ -39,7 +36,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID || "",
       clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
-      callbackURL: "/auth/github/callback",
+      callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
       const email = profile.emails?.[0]?.value || null;
@@ -172,8 +169,11 @@ app.post("/logout", (req, res, next) => {
 
 function requireAuth(req, res, next) {
   if (!req.user) {
-    return res.status(401).json({ success: false, error: "You must be logged in." });
+    return res
+      .status(401)
+      .json({ success: false, error: "You must be logged in." });
   }
+
   next();
 }
 
@@ -192,36 +192,43 @@ app.post("/api/favorites", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
-
 app.get("/api/favorites", requireAuth, (req, res) => {
   const places = JSON.parse(fs.readFileSync("./data/places.json", "utf8"));
 
-  const submitted = db.prepare(`
-    SELECT id, name, lat, lon, phone, website, hours, tags
-    FROM user_submissions
-  `).all().map((row) => ({
-    id: String(row.id + 100),
-    name: row.name,
-    lat: row.lat,
-    lon: row.lon,
-    phone: row.phone,
-    website: row.website,
-    hours: row.hours,
-    tags: JSON.parse(row.tags)
-  }));
+  const submitted = db
+    .prepare(`
+      SELECT id, name, lat, lon, phone, website, hours, tags
+      FROM user_submissions
+    `)
+    .all()
+    .map((row) => ({
+      id: String(row.id + 100),
+      name: row.name,
+      lat: row.lat,
+      lon: row.lon,
+      phone: row.phone,
+      website: row.website,
+      hours: row.hours,
+      tags: JSON.parse(row.tags),
+    }));
 
   const allPlaces = [...places, ...submitted].map((place) => ({
     ...place,
-    id: String(place.id)
+    id: String(place.id),
   }));
 
-  const favoriteIds = db.prepare(`
-    SELECT place_id
-    FROM favorites
-    WHERE user_id = ?
-  `).all(req.user.id).map((row) => row.place_id);
+  const favoriteIds = db
+    .prepare(`
+      SELECT place_id
+      FROM favorites
+      WHERE user_id = ?
+    `)
+    .all(req.user.id)
+    .map((row) => row.place_id);
 
-  const favorites = allPlaces.filter((place) => favoriteIds.includes(String(place.id)));
+  const favorites = allPlaces.filter((place) =>
+    favoriteIds.includes(String(place.id))
+  );
 
   res.json(favorites);
 });
@@ -235,6 +242,8 @@ app.delete("/api/favorites/:placeId", requireAuth, (req, res) => {
   res.json({ success: true });
 });
 
+console.log("GitHub callback URL:", process.env.GITHUB_CALLBACK_URL);
+console.log("GitHub client ID exists:", !!process.env.GITHUB_CLIENT_ID);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
