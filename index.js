@@ -1,8 +1,6 @@
 require("dotenv").config();
 
-console.log("CLIENT ID:", process.env.GITHUB_CLIENT_ID);
-console.log("CLIENT SECRET exists:", !!process.env.GITHUB_CLIENT_SECRET);
-console.log("SESSION SECRET exists:", !!process.env.SESSION_SECRET);
+
 
 
 const express = require("express");
