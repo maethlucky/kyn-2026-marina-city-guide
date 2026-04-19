@@ -6,7 +6,8 @@
     "name": "Gloria Jean Tate Park",
     "tags": [
       "outdoors",
-      "park"
+      "park",
+      "hidden_gem"
     ]
   },
   {
@@ -16,7 +17,8 @@
     "name": "Locke-Paddom Wetlands Park",
     "tags": [
       "outdoors",
-      "park"
+      "park",
+      "hidden_gem"
     ]
   },
   {
@@ -66,7 +68,9 @@
     "name": "English Ales Brewery",
     "tags": [
       "pub",
-      "english"
+      "english",
+      "hidden_gem",
+      "local_owned"
     ]
   },
   {
@@ -133,7 +137,8 @@
     "lon": -121.8032364,
     "name": "Marina Community Center",
     "tags": [
-      "community_centre"
+      "community_centre",
+      "hidden_gem"
     ]
   },
   {
@@ -153,7 +158,9 @@
     "tags": [
       "restaurant",
       "fast_food",
-      "mexican"
+      "mexican",
+      "hidden_gem",
+      "local_owned"
     ],
     "website": "https://papachevos.com",
     "phone": "+1-831-884-9545",
@@ -177,7 +184,9 @@
     "lon": -121.7998808,
     "name": "Pressed",
     "tags": [
-      "cafe"
+      "cafe",
+      "hidden_gem",
+      "local_owned"
     ]
   },
   {
@@ -220,7 +229,8 @@
     "lon": -121.7952694,
     "name": "Lucky Noodles",
     "tags": [
-      "restaurant"
+      "restaurant",
+      "local_owned"
     ]
   },
   {
@@ -244,7 +254,9 @@
     "lon": -121.7967068,
     "name": "Cafe Mia",
     "tags": [
-      "cafe"
+      "cafe",
+      "hidden_gem",
+      "local_owned"
     ]
   },
   {
@@ -254,7 +266,9 @@
     "name": "Lee's Garden",
     "tags": [
       "restaurant",
-      "chinese"
+      "chinese",
+      "hidden_gem",
+      "local_owned"
     ]
   },
   {
@@ -274,7 +288,9 @@
     "name": "New Tokyo",
     "tags": [
       "restaurant",
-      "sushi"
+      "sushi",
+      "hidden_gem",
+      "local_owned"
     ]
   },
   {
@@ -305,7 +321,8 @@
     "name": "Preston Park",
     "tags": [
       "park",
-      "outdoors"
+      "outdoors",
+      "hidden_gem"
     ]
   },
   {
@@ -335,7 +352,8 @@
     "lon": -121.7999035,
     "name": "Las Cazuelas",
     "tags": [
-      "restaurant"
+      "restaurant",
+      "local_owned"
     ]
   },
   {
@@ -358,7 +376,8 @@
     "lon": -121.8100462,
     "name": "Poké Bar",
     "tags": [
-      "restaurant"
+      "restaurant",
+      "local_owned"
     ]
   },
   {
@@ -389,7 +408,8 @@
     "lon": -121.8106694,
     "name": "360 Health Cafe",
     "tags": [
-      "cafe"
+      "cafe",
+      "local_owned"
     ]
   },
   {
@@ -410,7 +430,8 @@
     "name": "Dametra",
     "tags": [
       "restaurant",
-      "mediterranean"
+      "mediterranean",
+      "local_owned"
     ]
   },
   {
@@ -453,7 +474,8 @@
     "lon": -121.8086376,
     "name": "Priscilla Bok Library",
     "tags": [
-      "library"
+      "library",
+      "hidden_gem"
     ]
   },
   {
@@ -462,7 +484,8 @@
     "lon": -121.8083191,
     "name": "Elma Ross Library",
     "tags": [
-      "library"
+      "library",
+      "hidden_gem"
     ]
   },
   {
@@ -472,7 +495,8 @@
     "name": "Noodle Bar",
     "tags": [
       "restaurant",
-      "vietnamese"
+      "vietnamese",
+      "local_owned"
     ]
   },
   {
@@ -481,7 +505,8 @@
     "lon": -121.7849989,
     "name": "Public Bookcase #1",
     "tags": [
-      "public_bookcase"
+      "public_bookcase",
+      "hidden_gem"
     ]
   },
   {
@@ -490,7 +515,8 @@
     "lon": -121.7885984,
     "name": "Public Bookcase #2",
     "tags": [
-      "public_bookcase"
+      "public_bookcase",
+      "hidden_gem"
     ]
   },
   {
@@ -499,7 +525,8 @@
     "lon": -121.7901816,
     "name": "Public Bookcase #3",
     "tags": [
-      "public_bookcase"
+      "public_bookcase",
+      "hidden_gem"
     ]
   },
   {
@@ -526,7 +553,8 @@
     "lon": -121.792836,
     "name": "Public Bookcase #4",
     "tags": [
-      "public_bookcase"
+      "public_bookcase",
+      "hidden_gem"
     ]
   },
   {
@@ -535,7 +563,8 @@
     "lon": -121.7920357,
     "name": "Public Bookcase #5",
     "tags": [
-      "public_bookcase"
+      "public_bookcase",
+      "hidden_gem"
     ]
   },
   {
@@ -544,7 +573,9 @@
     "lon": -121.796515,
     "name": "I'm Thai Cuisine",
     "tags": [
-      "restaurant"
+      "restaurant",
+      "hidden_gem",
+      "local_owned"
     ],
     "website": "https://imthaimarina.com",
     "hours": "Mo-Su 11:00-20:30"
@@ -555,7 +586,9 @@
     "lon": -121.7983469,
     "name": "Marina Village Restaurant",
     "tags": [
-      "restaurant"
+      "restaurant",
+      "hidden_gem",
+      "local_owned"
     ]
   },
   {
@@ -566,7 +599,8 @@
     "tags": [
       "outdoors",
       "beach",
-      "editors_choice"
+      "editors_choice",
+      "hidden_gem"
     ]
   }
 ]

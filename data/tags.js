@@ -34,7 +34,7 @@ const tags = [
         ]
     },
     { id: 'editors_choice', label: `Editor's Choice`},
-    { id: 'hidden_gem', label: 'Hidden Gem'},
+    { id: 'hidden_gem', label: 'Hidden Gems'},
     { id: 'local_owned', label: 'Local Owned'},
 ];
 
