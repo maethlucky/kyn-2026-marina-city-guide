@@ -81,15 +81,38 @@
 
     <script>
         const selectedTags = new Set();
+        let favorites = new Set(JSON.parse(localStorage.getItem("favorites") || "[]"));
         let tagLabels = {};
         let currentResults = [];
         fetchTags();
 
         document.querySelector("#tag-grid").addEventListener("click", toggleTag);
         document.querySelector("#subcategory-shelf").addEventListener("click", toggleTag);
-        document.querySelector("#results-container").addEventListener("click", openPlaceFromCard);
-        // document.querySelector("#close-details").addEventListener("click", closeDetailsPanel);
-        // document.querySelector("#details-backdrop").addEventListener("click", closeDetailsPanel);
+        document.querySelector("#results-container").addEventListener("click", handleResult);
+
+        function handleResult(e) {
+            if (e.target.classList.contains("fav-btn")) {
+                e.stopPropagation();
+
+                const card = e.target.closest(".result-card");
+                const placeId = Number(card.dataset.placeId);
+
+                if (favorites.has(placeId)) {
+                    favorites.delete(placeId);
+                    e.target.textContent = "♡";
+                    e.target.classList.remove("active");
+                } else {
+                    favorites.add(placeId);
+                    e.target.textContent = "♥";
+                    e.target.classList.add("active");
+                }
+                
+                localStorage.setItem("favorites", JSON.stringify([...favorites]));
+                return;
+            }
+
+            openPlaceFromCard(e);
+        }
 
         function toggleTag(e) {
             if (!e.target.classList.contains("interest-tag")) return;
@@ -118,12 +141,17 @@
             const res = await fetch("/api/places");
             const places = await res.json();
 
+            const favFilterOn = document.querySelector("#fav-filter-btn")?.classList.contains("active");
+
             const scored = places
                 .map((place) => ({
                     ...place,
                     score: place.tags.filter((t) => selectedTags.has(t)).length,
                 }))
-                .filter((p) => p.score > 0)
+                .filter((p) => {
+                    if (favFilterOn) return favorites.has(p.id);
+                    return p.score > 0;
+                })
                 .sort((a, b) => b.score - a.score);
 
             currentResults = scored
@@ -135,15 +163,11 @@
                 const col = document.createElement("div");
                 col.className = "col-md-4 col-sm-6";
 
-                // col.innerHTML = `
-                //     <div class="result-card">
-                //         <h3>${place.name ?? "Name Unknown"}</h3>
-                //         <p>${place.tags.map((t) => tagLabels[t] ?? t).join(", ")}</p>
-                //     </div>
-                // `;
-                // container.appendChild(col);
                 col.innerHTML = `
                     <div class="result-card" data-place-id="${place.id}">
+                        <button class="fav-btn ${favorites.has(place.id) ? 'active' : ''}">
+                            ${favorites.has(place.id) ? '♥' : '♡'}
+                        </button>
                         <h3>${place.name ?? "Name Unknown"}</h3>
                         <p>${place.tags.map((t) => tagLabels[t] ?? t).join(", ")}</p>
                     </div>
@@ -161,17 +185,11 @@
             if(!place) return;
 
             renderPlaceDetails(place);
-            // document.querySelector("#details-panel").classList.add("open");
-            // document.querySelector("#details-backdrop").classList.add("show")
+        
             const modalE1 = document.getElementById("placeDetailsModal");
             const modal = new bootstrap.Modal(modalE1);
             modal.show();
         }
-
-        // function closeDetailsPanel(){
-        //     document.querySelector("#details-panel").classList.remove("open")
-        //     document.querySelector("#details-backdrop").classList.remove("show")
-        // }
 
         function renderPlaceDetails(place){
             document.querySelector("#details-title").textContent = place.name ?? "Name Unknown";
@@ -275,6 +293,16 @@
                     subContainer.appendChild(subRow);
                 }
             })
+
+            const favBtn = document.createElement("button");
+            favBtn.className = "interest-tag";
+            favBtn.id = "fav-filter-btn";
+            favBtn.textContent = "♥ Favorites";
+            favBtn.addEventListener("click", () => {
+                favBtn.classList.toggle("active");
+                updateResults();
+            });
+            container.appendChild(favBtn);
         }
 
 
