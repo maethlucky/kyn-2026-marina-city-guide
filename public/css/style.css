@@ -142,3 +142,84 @@ body {
 .detail-block {
     margin-bottom: 0.5rem;
 }
+
+.submit-btn {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: white;
+    color: #18312b;
+    border: 1px solid rgba(24, 49, 43, 0.15);
+    border-radius: 999px;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: #18312b;
+    color: white;
+}
+
+.submit-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    border: 1px solid rgba(24, 49, 43, 0.08);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.submit-group {
+    margin-bottom: 1.1rem;
+}
+
+.submit-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+}
+
+.submit-row .submit-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.submit-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4d7a70;
+    margin-bottom: 0.4rem;
+}
+
+.optional {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #888;
+    font-size: 0.75rem;
+}
+
+.submit-input {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid rgba(24, 49, 43, 0.15);
+    background: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    color: #18312b;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.submit-input:focus {
+    border-color: #4d7a70;
+}
