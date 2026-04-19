@@ -119,3 +119,13 @@ body {
     color: #4d7a70;
     margin: 0;
 }
+
+.detail-chip {
+    display: inline-block;
+    margin-right: 0.2rem;
+    margin-block: 0.3rem;
+    padding: 7px;
+    border: 1px solid #cccccc;
+    color: rgb(88, 88, 88);
+    border-radius: 15px;
+}
