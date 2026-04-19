@@ -41,6 +41,7 @@ body {
     font-size: 1.05rem;
     color: #49635d;
     margin: 0 auto 2rem;
+    text-align: center;
 }
 
 .tag-grid {
@@ -77,17 +78,25 @@ body {
 .subcategory-row {
     display: none;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 0 0.25rem 0.5rem;
-    border-left: 2px solid rgba(24, 49, 43, 0.15);
     margin-bottom: 0.5rem;
-    max-width: fit-content;
 }
 
 .subcategory-row.visible {
     display: flex;
 }
 
+.subcategory-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4d7a70;
+    margin-right: 0.25rem;
+    white-space: nowrap;
+}
 .results-shell {
     max-width: 900px;
 }
@@ -128,4 +137,8 @@ body {
     border: 1px solid #cccccc;
     color: rgb(88, 88, 88);
     border-radius: 15px;
+}
+
+.detail-block {
+    margin-bottom: 0.5rem;
 }

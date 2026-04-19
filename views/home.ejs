@@ -15,7 +15,7 @@
         <p class=" hero-title">Marina, by Interest</p>
         <p class="eyebrow mb-3">Looking for something new? Find something local!</p>
         <p class="hero-copy">
-            Pick a few interests and explore local spots around Marina </p>
+            Pick a few interests and explore local spots around Marina! </p>
         </p>
 
         <div class="tag-grid" id="tag-grid">
@@ -130,7 +130,7 @@
             const container = document.querySelector("#results-container");
             container.innerHTML = "";
 
-            scored.slice(0, 10).forEach(place => {
+            scored.slice(0, 12).forEach(place => {
                 const col = document.createElement("div");
                 col.className = "col-md-4 col-sm-6";
 
@@ -199,36 +199,32 @@
                         : `<p class="text-muted mb-0">Map link not available</p>`;
             body.innerHTML = `
                 <div class="detail-block">
-                    <h6>Tags</h6>
+                    <h6>Tags:</h6>
                     <div class="detail-tags">${tagHtml}</div>
                 </div>
 
                 <div class="detail-block">
-                    <h6>Coordinates</h6>
+                    <h6>Coordinates:</h6>
                     <p class="mb-0">${place.lat ?? "?"}, ${place.lon ?? "?"}</p>
                 </div>
 
                 <div class="detail-block">
-                    <h6>Phone</h6>
+                    <h6>Phone:</h6>
                     ${phoneHtml}
                 </div>
 
                 <div class="detail-block">
-                    <h6>Website</h6>
+                    <h6>Website:</h6>
                     ${websiteHtml}
                 </div>
 
                 <div class="detail-block">
-                    <h6>Hours</h6>
+                    <h6>Hours:</h6>
                     ${hoursHtml}
                 </div>
 
                 <div class="detail-block">
-                    <h6>OpenStreetMap ID</h6>
-                    <p class="mb-0">${place.id}</p>
-                </div>
-                <div class="detail-block">
-                    <h6>Directions</h6>
+                    <h6>Directions:</h6>
                     ${mapsHtml}
                 </div>
             `;
@@ -258,6 +254,11 @@
                     const subRow = document.createElement("div");
                     subRow.className = "subcategory-row";
                     subRow.id = `sub-${tag.id}`;
+
+                    const subLabel = document.createElement("span");
+                    subLabel.className = "subcategory-label";
+                    subLabel.textContent = tag.label;
+                    subRow.appendChild(subLabel);
 
                     tag.subcategories.forEach(sub => {
                         tagLabels[sub.id] = sub.label;

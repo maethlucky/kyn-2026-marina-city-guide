@@ -13,6 +13,8 @@ const tags = [
             { id: 'mediterranean', label: 'Mediterranean' },
             { id: 'american', label: 'American' },
             { id: 'sandwich', label: 'Sandwiches' },
+            { id: 'takeaway', label: 'Takeaway' },
+            { id: 'delivery', label: 'Delivery' },
         ]
     },
     { id: 'cafe', label: 'Cafe' },
@@ -21,10 +23,8 @@ const tags = [
     { id: 'supermarket', label: 'Supermarket' },
     { id: 'convenience', label: 'Convenience Store' },
     { id: 'library', label: 'Library' },
-    { id: 'community_centre', label: 'Community Centre' },
+    { id: 'community_centre', label: 'Community Center' },
     { id: 'public_bookcase', label: 'Public Bookcase' },
-    { id: 'takeaway', label: 'Takeaway' },
-    { id: 'delivery', label: 'Delivery' },
     { id: 'wheelchair', label: 'Wheelchair Accessible' },
     { 
         id: 'outdoors', label: 'Outdoors',

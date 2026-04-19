@@ -3,7 +3,7 @@
     "id": 358849538,
     "lat": 36.6807919,
     "lon": -121.8030063,
-    "name": "Gloria Jean Tate Park",
+    "name": "Glorya Jean Tate Park",
     "tags": [
       "outdoors",
       "park",
@@ -14,7 +14,7 @@
     "id": 358849546,
     "lat": 36.6898151,
     "lon": -121.8015106,
-    "name": "Locke-Paddom Wetlands Park",
+    "name": "Locke-Paddon Wetlands Park",
     "tags": [
       "outdoors",
       "park",
@@ -68,7 +68,6 @@
     "name": "English Ales Brewery",
     "tags": [
       "pub",
-      "english",
       "hidden_gem",
       "local_owned"
     ]
@@ -163,7 +162,7 @@
       "local_owned"
     ],
     "website": "https://papachevos.com",
-    "phone": "+1-831-884-9545",
+    "phone": "+1 831-884-9545",
     "hours": "Mo-Th 06:00-00:00; Fr-Sa 06:00-02:00; Su 06:00-22:00"
   },
   {
@@ -321,8 +320,7 @@
     "name": "Preston Park",
     "tags": [
       "park",
-      "outdoors",
-      "hidden_gem"
+      "outdoors"
     ]
   },
   {
@@ -343,7 +341,7 @@
       "supermarket"
     ],
     "website": "https://commissaries.com",
-    "phone": "+1-831-242-7668",
+    "phone": "+1 831-242-7668",
     "hours": "Tu-Sa 09:00-19:00; Su 10:00-18:00"
   },
   {
@@ -353,8 +351,13 @@
     "name": "Las Cazuelas",
     "tags": [
       "restaurant",
-      "local_owned"
-    ]
+      "local_owned",
+      "editors_choice",
+      "wheelchair"
+    ],
+    "website": "https://lascazuelas831.com",
+    "phone": "+1 831-901-3741",
+    "hours": "Su-We 09:00-21:30; Th-Sa 9:00-22:00"
   },
   {
     "id": 7090056069,
@@ -377,8 +380,13 @@
     "name": "Poké Bar",
     "tags": [
       "restaurant",
-      "local_owned"
-    ]
+      "local_owned",
+      "editors_choice",
+      "wheelchair"
+    ],
+    "website": "https://www.ilovepokebar.com/locations/monterery",
+    "phone": "+1 831-717-4570",
+    "hours": "Mo-Su 10:30-19:00"
   },
   {
     "id": 7090056074,
@@ -469,26 +477,6 @@
     "phone": "+1 831-883-5720"
   },
   {
-    "id": 10082358464,
-    "lat": 36.6609908,
-    "lon": -121.8086376,
-    "name": "Priscilla Bok Library",
-    "tags": [
-      "library",
-      "hidden_gem"
-    ]
-  },
-  {
-    "id": 10082358465,
-    "lat": 36.6610234,
-    "lon": -121.8083191,
-    "name": "Elma Ross Library",
-    "tags": [
-      "library",
-      "hidden_gem"
-    ]
-  },
-  {
     "id": 10747409667,
     "lat": 36.6875416,
     "lon": -121.7974228,
@@ -496,76 +484,13 @@
     "tags": [
       "restaurant",
       "vietnamese",
-      "local_owned"
-    ]
-  },
-  {
-    "id": 12404364518,
-    "lat": 36.6868108,
-    "lon": -121.7849989,
-    "name": "Public Bookcase #1",
-    "tags": [
-      "public_bookcase",
-      "hidden_gem"
-    ]
-  },
-  {
-    "id": 12573532335,
-    "lat": 36.6882899,
-    "lon": -121.7885984,
-    "name": "Public Bookcase #2",
-    "tags": [
-      "public_bookcase",
-      "hidden_gem"
-    ]
-  },
-  {
-    "id": 12573532336,
-    "lat": 36.6968043,
-    "lon": -121.7901816,
-    "name": "Public Bookcase #3",
-    "tags": [
-      "public_bookcase",
-      "hidden_gem"
-    ]
-  },
-  {
-    "id": 12594196676,
-    "lat": 36.6824982,
-    "lon": -121.8040078,
-    "name": "Del Monte Asian Market",
-    "tags": [
-      "supermarket"
-    ]
-  },
-  {
-    "id": 12594302845,
-    "lat": 36.682298,
-    "lon": -121.8041833,
-    "name": "Asian Market",
-    "tags": [
-      "supermarket"
-    ]
-  },
-  {
-    "id": 12695827472,
-    "lat": 36.685467,
-    "lon": -121.792836,
-    "name": "Public Bookcase #4",
-    "tags": [
-      "public_bookcase",
-      "hidden_gem"
-    ]
-  },
-  {
-    "id": 12736157706,
-    "lat": 36.6890003,
-    "lon": -121.7920357,
-    "name": "Public Bookcase #5",
-    "tags": [
-      "public_bookcase",
-      "hidden_gem"
-    ]
+      "local_owned",
+      "editors_choice",
+      "wheelchair"
+    ],
+    "website": "https://noodlebar831.com",
+    "phone": "+1 831-384-6225",
+    "hours": "Mo-Su 11:00-20:00 (Closed on Tuesdays)"
   },
   {
     "id": 12768936401,
@@ -599,7 +524,121 @@
     "tags": [
       "outdoors",
       "beach",
+      "editors_choice"
+    ]
+  },
+  {
+    "id": 1,
+    "lat": 36.68456430049589,
+    "lon": -121.7948949146794,
+    "name": "Marina Donuts & Bagels",
+    "tags": [
+      "restaurant",
+      "cafe",
+      "american",
+      "sandwich",
+      "local_owned",
+      "editors_choice"
+    ],
+    "phone": "+1 831-883-4527",
+    "hours": "Mo-Fr 05:00-15:00; Sa 06:00-15:00; Su 06:00-14:00"
+  },
+  {
+    "id": 2,
+    "lat": 36.66414467436666, 
+    "lon": -121.80994645550372,
+    "name": "Trader Joe's",
+    "tags": [
+      "supermarket",
+      "wheelchair"
+    ]
+  },
+  {
+    "id": 3,
+    "lat": 36.691452666080465,
+    "lon": -121.79966124294081,
+    "name": "Marina Library",
+    "tags": [
+      "library",
+      "hidden_gem",
+      "editors_choice"
+    ],
+    "website": "https://www.countyofmonterey.gov/government/departments-i-z/library/locations/marina-branch",
+    "phone": "+1-831-883-7507",
+    "hours": "Tu-We 11:00-19:00; Th 10:00-18:00; Fr-Sa 10:00-17:00"
+  },
+  {
+    "id": 4,
+    "lat": 36.66025284216382, 
+    "lon": -121.82086018091098,
+    "name": "Fort Ord Dunes State Park",
+    "tags": [
+      "outdoors",
+      "park",
+      "beach",
+      "editors_choice"
+    ]
+  },
+  {
+    "id": 12404364518,
+    "lat": 36.6868108,
+    "lon": -121.7849989,
+    "name": "Public Bookcase #1",
+    "tags": [
+      "public_bookcase",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": 12573532335,
+    "lat": 36.6882899,
+    "lon": -121.7885984,
+    "name": "Public Bookcase #2",
+    "tags": [
+      "public_bookcase",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": 12573532336,
+    "lat": 36.6968043,
+    "lon": -121.7901816,
+    "name": "Public Bookcase #3",
+    "tags": [
+      "public_bookcase",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": 12594302845,
+    "lat": 36.682298,
+    "lon": -121.8041833,
+    "name": "Asian Market",
+    "tags": [
+      "supermarket",
       "editors_choice",
+      "wheelchair"
+    ],
+    "phone": "+1 831-384-3000",
+    "hours": "Mo-Sa 8:30-20:00; Su 9:00-20:00"
+  },
+  {
+    "id": 12695827472,
+    "lat": 36.685467,
+    "lon": -121.792836,
+    "name": "Public Bookcase #4",
+    "tags": [
+      "public_bookcase",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": 12736157706,
+    "lat": 36.6890003,
+    "lon": -121.7920357,
+    "name": "Public Bookcase #5",
+    "tags": [
+      "public_bookcase",
       "hidden_gem"
     ]
   }
