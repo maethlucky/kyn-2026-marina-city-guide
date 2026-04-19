@@ -1,4 +1,7 @@
 const express = require("express");
+const fs = require("fs")
+const db = require("./db.js")
+
 
 const app = express();
 app.set("view engine", "ejs");
@@ -20,13 +23,49 @@ app.get("/api/tags", (req, res) => {
 
 app.get("/api/places", (req, res) => {
   places = require("./data/places.json");
-  res.json(places);
+
+  const submitted = db.prepare(`
+    SELECT id, name, lat, lon, phone, website, hours, tags
+    FROM user_submissions
+  `).all().map((row) => ({
+    id: `user-${row.id}`,
+    name: row.name,
+    lat: row.lat,
+    lon: row.lon,
+    phone: row.phone,
+    website: row.website,
+    hours: row.hours,
+    tags: JSON.parse(row.tags)
+  }));
+
+
+  res.json([...places,...submitted]);
 });
 
 // Route for submitting data to the sqlite database, currently a placeholder
 app.post("/api/submit", (req, res) => {
-  res.json({ success: true, id: "placeholder" });
+  const { name, lat, lon, phone, website, hours, tags } = req.body;
+  if (!name || typeof lat !== "number" || typeof lon !== "number") {
+    return res.status(400).json({ success: false, error: "Missing required fields." });
+  }
+  const stmt = db.prepare(`
+    INSERT INTO user_submissions (name, lat, lon, phone, website, hours, tags)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `);
+
+  const result = stmt.run(
+    name,
+    lat,
+    lon,
+    phone || null,
+    website || null,
+    hours || null,
+    JSON.stringify(tags || [])
+  );
+  res.json({ success: true, id: result.lastInsertRowid  });
 });
+
+
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
